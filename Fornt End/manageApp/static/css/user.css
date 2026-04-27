@@ -1,0 +1,55 @@
+body {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0;
+    background-size: cover;
+    filter: drop-shadow(10px) saturate(10px);
+    backdrop-filter:saturate(10px);
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-image: url('/static/img/back.png');
+    background-color: rgba(124, 201, 220, 0.346);
+    scrollbar-width: 0px;
+    overflow: auto;
+    scroll-margin: 0px;
+    scroll-behavior: smooth ;
+}
+
+.item2 a {
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 35px;
+    align-items: center;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    transition: 1.5ms;
+    padding: 10px;
+    animation-delay: 1.4ms;
+}
+
+.item2 a:hover {
+    background-color: #FFF;
+
+}
+
+#active {
+    background-color: #faf6f6;
+}
+
+.custom {
+    padding: 50px;
+}
+
+.btn {
+    color: white;
+    margin: 30px 0px;
+    background-color: rgb(66, 81, 114);
+    padding: 10px 20px;
+    border-radius: 10px 10px;
+    border: none;
+}
+p{
+    color: white;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/static/css/user.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bone Frature</title>
+
+</head>
+
+<body>
+    <style>
+        input {
+            padding: 10px;
+            border-radius: 10px 10px;
+            margin: 10px;
+            width: 40vh;
+        }
+    </style>
+    <header style="background-color: rgba(191, 243, 48, 0.747);">
+        <div style="display: grid;
+        grid-template-columns: repeat(2,1fr);">
+            <div class="item">
+                <p style="padding: 10px;
+                font-weight: bold;
+                margin-top: 0px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    <a href="" id="custom" style="text-decoration: none;color: black;padding: 20px;">
+                        An application to scanalayse an given x ray image to defects in bones, muscles and nerves
+                    </a>
+                </p>
+            </div>
+            <div class="item2" style="display: flex;justify-content: end;height: 100%;">
+                <a href="{%url 'Index'%}">Home</a>
+                <a href="{% url 'upload' %}">Upload </a>
+                <a id="active" href="{% url 'profile' %}">Profile</a>
+                <a href="{%url 'logout' %}">Logout</a>
+            </div>
+
+        </div>
+    </header>
+    <div style="display: flex;justify-content: center;">
+        <form action="{%url 'profile' %}" method="post">
+            {%csrf_token%}
+            <div
+                style=" margin-top: 150px;background-color: white; display: flex;flex-direction: column; border-radius: 10px 10px;">
+
+                <div style="width: 100%;display: flex;justify-content: center;">
+                    <img src="   https://cdn-icons-png.flaticon.com/512/16869/16869838.png " style="width: 80px;height: 80px;border-radius: 100px 100px; padding:20px; 
+                    background-color: transparent;border: 10px 10px;
+                ">
+                </div>
+           
+
+
+                <input type="text" name="name" value="{{name}}" placeholder="Name">
+                <input type="number" name="mobile" value="{{mobile}}" placeholder="Mobile">
+                <input type="password" name="password" value="{{password}}" placeholder="Password">
+                <button class="btn" type="submit" style="margin: 10px;"> update</button>
+                
+                {%if status%}
+                <div style="display: flex;justify-content:end; padding: 10px;">
+                {%if status == 'Success' %}
+                <p style="color: green;margin: 0px;padding: 0px;">{{status}}</p>
+                {%else%}
+                <p style="color: red;margin: 0px;padding: 0px;">{{status}}</p>
+                {%endif%}
+            </div>
+                {%endif%}
+            </div>
+        </form>
+     
+    </div>
+
+
+</body>
+
+</html>

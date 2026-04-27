@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/static/css/user.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bone Frature</title>
+
+</head>
+
+<body>
+
+    <header style="background-color: rgba(191, 243, 48, 0.747);">
+        <div style="display: grid;
+        grid-template-columns: repeat(2,1fr);">
+            <div class="item">
+                <p style="padding: 10px;
+                font-weight: bold;
+                margin-top: 0px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" >
+                    <a href="" id="custom"  style="text-decoration: none;color: black;padding: 20px;" >
+                        An application to scanalayse an given x ray image to defects in bones, muscles and nerves
+                    </a>
+                </p>
+            </div>
+            <div class="item2" style="display: flex;justify-content: end;height: 100%;">
+                <a id="active" href="{%url 'Index'%}">Home</a>
+                <a href="{% url 'upload' %}">Upload </a>
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{%url 'logout' %}">Logout</a>
+            </div>
+
+        </div>
+    </header>
+    <p style="color: black; padding: 10px; font-size: 20px;font-weight: bold;">Hi {{name}} !!</p>
+    <div style="display:grid;justify-content: center;align-items: center;height: 100vh;
+    grid-template-rows: repeat(2,0fr);gap: 0px;row-gap: 0px;">
+        <div style="display: flex;justify-self: center;">
+            <img src="/static/img/doctor.png" style="width: 500px;height: 350px;
+            border-radius: 20px 20px;margin-top: 20px;">
+
+        </div>
+        <div>
+            <p
+                style="margin: 0px;word-spacing: 0.3px;line-height: 2;color: white;
+        padding-left: 50px; padding-right: 50px;padding-top: 20px;text-align: justify;font-size: 16px;font-weight: lighter; ">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+            </p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

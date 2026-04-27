@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bone Frature</title>
+</head>
+
+<body>
+    <style>
+          body{
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+        }
+        img{
+            
+            -webkit-user-drag: none;
+        }
+        body {
+            background-image:
+                url('/static/img/back view.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+            margin: 0px;
+            backdrop-filter: contrast(100%);
+            background-color: rgba(173, 216, 230, 0.36);
+        }
+
+        input {
+            margin: 5px;
+            padding: 10px;
+            width: 90%;
+            border-radius: 10px 10px;
+            border: 2px;
+            border-style: groove;
+        }
+
+        .singup p,
+        a {
+            padding: 5px;
+            color: white;
+            font-size: 16px;
+
+        }
+    </style>
+
+    <div class="container" style="height: 100vh;width: 100%;
+    margin-top: 20px;background-color: rgba(0, 0, 0, 0);display: grid;
+    justify-content: center;align-items: center;
+    grid-template-columns: repeat(2,1fr);gap: 20px;">
+        <div class="inner" style="width: 100%;display: flex;justify-content: center;">
+            <div>
+                <div style="background-color: rgb(40, 57, 71);
+             box-shadow: inset  10px 10px 20px #0000008b;
+             padding: 20px 20px;margin: 10px; border-radius: 10px 10px;">
+                    <p style="width: 100%;text-align: center;color: white;font-size: 20px;font-weight: bold;">Login</p>
+                    <form action="{%url 'userlogin' %}" method="post">
+                        {% csrf_token %}
+                    <input type="text" placeholder="Email" required name="email"/><br>
+                    <input type="password" placeholder="Password" required name="password" /><br>
+                        {{message}}
+                    <div style="display: flex;justify-content: center;">
+                        <button type="submit"
+                            style="color: white; margin: 30px 0px;background-color: rgb(66, 81, 114);padding: 10px 20px;border-radius: 10px 10px;border: none;">
+                            Login
+                        </button>
+                    </div>
+                </form>
+                    <div class="singup"
+                        style="display: flex;justify-content: center;align-items: center; padding: 10px;">
+                        <p>Don't have an account ?</p>
+                        <a href="{%url 'signup' %}">Sign up</a>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+        <div class="inner">
+            <div>
+                <img src="/static/img/bone doctor.jpg" style="width: auto;height: 500px;border-radius: 20px 20px;margin: 10px;
+                 box-shadow: inset 10px 10px #0000008b;">
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/static/css/user.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url(https://i0.wp.com/swdic.com/wp-content/uploads/2020/08/radiologist-xray.jpg?fit=380%2C254&ssl=1);
+        }
+
+        input {
+            justify-content: center;
+            width: fit-content;
+            margin: 0px;
+            border-radius: 10px 10px;
+            padding: 8px;
+            background-color: rgba(19, 172, 172, 0.925);
+        }
+
+        .holder1 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .allPoint p {
+            text-align: justify;
+            letter-spacing: 1px;
+        }
+        input::-webkit-file-upload-button {
+            background-color: none;
+            border-radius: 10px 10px;
+            border: none;
+        }
+
+        select {
+            background-color: aqua;
+        }
+
+        option {
+            color: black;
+        }
+
+        tr,
+        td,
+        table {
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid black;
+            border-color: black;
+            text-align: center;
+        }
+    </style>
+    <header style="background-color: rgba(191, 243, 48, 0.747);">
+        <div style="display: grid;
+        grid-template-columns: repeat(2,1fr);">
+            <div class="item">
+                <p style="padding: 10px;
+                font-weight: bold;
+                margin-top: 0px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    <a href="" id="custom" style="text-decoration: none;color: black;padding: 20px;">
+                        An application to scanalayse an given x ray image to defects in bones, muscles and nerves
+                    </a>
+                </p>
+            </div>
+            <div class="item2" style="display: flex;justify-content: end;height: 100%;">
+                <a href="{%url 'Index'%}">Home</a>
+                <a id="active" href="{% url 'upload' %}">Upload </a>
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{%url 'logout' %}">Logout</a>
+            </div>
+
+        </div>
+    </header>
+    <p style="color: black; padding: 10px; font-size: 20px;font-weight: bold;">Hi {{name}} !!</p>
+    <div class="holder1">
+        <div style="width: 100%;display: flex;justify-content: center;">
+            <div
+                style="width: fit-content;background-color: rgb(239, 248, 193);box-shadow:10px 10px 10px 10px #000000 inherit ;z-index: 1;border-radius: 10px 10px;height: fit-content;">
+                <div
+                    style="display: flex;justify-content: center;justify-self: center; margin: 10px;height: fit-content;">
+                    {% if image%}
+                    <img src="{{image}}" style="width: 350px;height: 350px;border-radius: 20px 20px;overflow: hidden;"
+                        id="displayedImage" alt="/static/img/gallery.png">
+                    {%else%}
+                    <img src="/static/img/gallery.png"
+                        style="width: 400px;height: 400px;border-radius: 20px 20px;overflow: hidden;"
+                        id="displayedImage" alt="/static/img/gallery.png">
+                    {%endif%}
+
+                </div>
+
+                <form action="{%url 'uploadscreen' %}" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <div style="display: flex;justify-content: center;">
+                        <input type="file" required accept="image/*" id="file" name="file"
+                            onchange="displayImage(event)" />
+                    </div>
+                    <textarea id="nonetype" name="base64" style="display: none;">
+                        {{image}} </textarea>
+                    <br>
+                    <div style="display: flex;justify-content: end; margin: 20px;padding: 5px;"> <button type="submit"
+                            style="width: fit-content;padding: 10px 10px;background-color: aqua;border: 0px;
+                    border-radius: 10px 10px; inset: 10px;">Upload</button></div>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div>
+          
+            <div  style="padding: 10px;background-color: white;box-shadow: inset;z-index: -1;width: fit-content;border-radius: 10px 10px;">
+                <div class="allPoint" style="width: 650px">
+                    {% if prediction %}
+
+                    <h1><b>{{prediction}}</b></h1>
+                    <h4><b>About :</b></h4>
+                        <p style="color: black;">
+                            {{ About22 }}
+                        </p>
+                    <h4><b>Cure :</b></h4>
+                        <p style="color: black;">
+                            {{ Cure22 }}
+                        </p>
+                    {%else%}
+                    <div style="width: 100%;display: flex;justify-content: center;">
+                        <img src="/static/img/test.jpg" width="200px" height="200px"
+                            style="border-radius: 10px 10px;margin: 20px; " alt="">
+                    </div>
+                    <p
+                        style="color: black; padding: 10px;letter-spacing: 1px;text-align: justify; width: 650px;margin: 5px ;">
+                        A fracture refers to a break or crack in a bone, and there are several types, each with distinct
+                        characteristics. An avulsion fracture occurs when a tendon or
+                        ligament pulls off a fragment of bone. A comminuted fracture involves the bone breaking into
+                        multiple pieces, often due to high-impact trauma. In a fracture dislocation, the
+                        bone is broken and displaced, affecting the joint’s alignment. A greenstick fracture is an
+                        incomplete fracture common in children, where the bone bends and cracks but doesn't
+                        break all the way through. A hairline fracture is a fine, thin crack, often not easily visible
+                        on an X-ray. In an impacted fracture, the bone fragments are driven into each other,
+                        typically from a fall or collision. A longitudinal fracture runs parallel to the length of the
+                        bone, while an oblique fracture occurs at an angle across the bone. Pathological
+                        fractures happen due to weakened bones, often from conditions like osteoporosis or cancer.
+                        <br><br>Finally, a spiral fracture is caused by a twisting or rotational force, resulting in a
+                        helical break pattern. Each type of fracture requires specific treatment depending on severity,
+                        location, and the patient’s health condition. Proper diagnosis and intervention are
+                        crucial for optimal healing.
+                    </p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        function displayImage(event) {
+            const imageIput = event.target.files[0]
+            const display = document.getElementById("displayedImage")
+
+            if (imageIput) {
+                const reader = new FileReader()
+                reader.onload = function (e) {
+                    display.src = e.target.result
+                    document.getElementById("nonetype").value = e.target.result
+                }
+
+                reader.readAsDataURL(imageIput)
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
